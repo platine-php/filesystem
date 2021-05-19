@@ -3,7 +3,7 @@
     "description": "Platine Filesystem is file system abstraction layer extendable by adapters",
     "type": "library",
     "license": "MIT",
-    "keywords": ["application", "filesystem", "framework", "php", "platine", "directory", "file", "link", "adapter"],
+    "keywords": ["application", "filesystem", "framework", "php", "platine", "directory", "file", "adapter"],
     "authors": [
         {
             "name": "NGUEREZA Tony",

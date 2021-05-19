@@ -180,11 +180,11 @@ class Directory extends AbstractLocal implements DirectoryInterface
         }
 
         switch ($type) {
-            case self::ALL;
+            case self::ALL:
               return array_merge($files['dir'], $files['file']);
-            case self::FILE;
+            case self::FILE:
               return $files['file'];
-            case self::DIR;
+            case self::DIR:
               return $files['dir'];
             default:
                 throw new InvalidArgumentException(sprintf(
