@@ -48,7 +48,7 @@ declare(strict_types=1);
 namespace Platine\Filesystem\Adapter\Local;
 
 use Platine\Filesystem\FileInterface;
-use Platine\Filesystem\Util\Helper;
+use Platine\Stdlib\Helper\Path;
 
 /**
  * Class File
@@ -119,7 +119,7 @@ class File extends AbstractLocal implements FileInterface
     {
         $mime = mime_content_type($this->path);
         if (!$mime || $mime === 'application/octet-stream' || $mime === 'inode/x-empty') {
-            $mime = Helper::getMimeByExtension($this->getExtension());
+            $mime = Path::getMimeByExtension($this->getExtension());
         }
 
         return $mime;

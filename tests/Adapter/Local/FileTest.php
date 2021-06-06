@@ -9,7 +9,7 @@ use Platine\Filesystem\Adapter\AdapterInterface;
 use Platine\Filesystem\Adapter\Local\File;
 use Platine\Filesystem\Adapter\Local\LocalAdapter;
 use Platine\Filesystem\FileInterface;
-use Platine\PlatineTestCase;
+use Platine\Dev\PlatineTestCase;
 
 /**
  * File class tests

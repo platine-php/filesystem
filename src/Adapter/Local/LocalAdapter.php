@@ -51,7 +51,7 @@ use InvalidArgumentException;
 use Platine\Filesystem\Adapter\AdapterInterface;
 use Platine\Filesystem\DirectoryInterface;
 use Platine\Filesystem\FileInterface;
-use Platine\Filesystem\Util\Helper;
+use Platine\Stdlib\Helper\Path;
 
 /**
  * Class LocalAdpater
@@ -64,7 +64,7 @@ class LocalAdapter implements AdapterInterface
      * The root directory
      * @var string
      */
-    protected string $root;
+    protected string $root = '.';
 
     /**
      * Create new instance
@@ -72,24 +72,17 @@ class LocalAdapter implements AdapterInterface
      */
     public function __construct(?string $root = null)
     {
-        if ($root === null) {
-            $path = realpath(__DIR__ . '../../../../../');
-            if ($path !== false) {
-                $root = dirname($path);
-            } else {
-                $root = '.';
-            }
-        }
+        if ($root !== null) {
+            $path = Path::normalizePathDS($root, true);
 
-        $normalizedRoot = Helper::normalizePath($root);
-        $rootAbsolute = realpath($normalizedRoot);
-        if ($rootAbsolute !== false) {
-            $this->root = $rootAbsolute . DIRECTORY_SEPARATOR;
-        } else {
-            throw new InvalidArgumentException(sprintf(
-                'Invalid root path [%s]',
-                $root
-            ));
+            if (!file_exists($path) || !is_writable($path)) {
+                throw new InvalidArgumentException(sprintf(
+                    'Root path [%s] does not exist or is not writable',
+                    $path
+                ));
+            }
+
+            $this->root = $path;
         }
     }
 
@@ -133,7 +126,7 @@ class LocalAdapter implements AdapterInterface
     */
     public function getAbsolutePath(string $path): string
     {
-        $normalizedPath = Helper::normalizePath($path);
+        $normalizedPath = Path::normalizePathDS($path);
         if (strpos($normalizedPath, $this->root) !== 0) {
             $normalizedPath = $this->root . ltrim($normalizedPath, DIRECTORY_SEPARATOR);
         }

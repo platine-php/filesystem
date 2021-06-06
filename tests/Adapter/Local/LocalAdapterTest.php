@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Platine\Test\Filesystem\Adapter\Local;
 
 use InvalidArgumentException;
+use Platine\Dev\PlatineTestCase;
 use Platine\Filesystem\Adapter\Local\LocalAdapter;
 use Platine\Filesystem\DirectoryInterface;
 use Platine\Filesystem\FileInterface;
-use Platine\PlatineTestCase;
 
 /**
  * LocalAdapter class tests
@@ -26,27 +26,15 @@ class LocalAdapterTest extends PlatineTestCase
 
         $t = new LocalAdapter();
         $this->assertEquals(
-            'foodir' . DIRECTORY_SEPARATOR,
+            '.',
             $this->getPropertyValue(LocalAdapter::class, $t, 'root')
         );
     }
 
-    public function testConstructorDefaultValueRealPathReturnFalse(): void
+    public function testConstructorRootDoesNotExist(): void
     {
-        global $mock_realpath_to_false;
-
-        $mock_realpath_to_false = true;
         $this->expectException(InvalidArgumentException::class);
-        $t = new LocalAdapter();
-    }
-
-    public function testConstructorCustomRootRealPathReturnFalse(): void
-    {
-        global $mock_realpath_to_false;
-
-        $mock_realpath_to_false = true;
-        $this->expectException(InvalidArgumentException::class);
-        $t = new LocalAdapter('my_root');
+        $t = new LocalAdapter('path/not/found');
     }
 
     public function testDirectoryInstance(): void

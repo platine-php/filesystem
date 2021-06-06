@@ -49,7 +49,7 @@ namespace Platine\Filesystem\Adapter\Local;
 
 use Platine\Filesystem\Adapter\AdapterInterface;
 use Platine\Filesystem\FileSystemInterface;
-use Platine\Filesystem\Util\Helper;
+use Platine\Stdlib\Helper\Path;
 
 /**
  * Class AbstractLocal
@@ -242,7 +242,7 @@ abstract class AbstractLocal implements FileSystemInterface
     */
     public function rename(string $newPath)
     {
-        $normalizedNewPath = rtrim(Helper::normalizePath($newPath), '\\/');
+        $normalizedNewPath = rtrim(Path::normalizePathDS($newPath), '\\/');
         if (strpos($normalizedNewPath, DIRECTORY_SEPARATOR) === false) {
             $normalizedNewPath = dirname($this->originalPath)
                             . DIRECTORY_SEPARATOR . $normalizedNewPath;

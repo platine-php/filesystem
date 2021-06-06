@@ -181,11 +181,11 @@ class Directory extends AbstractLocal implements DirectoryInterface
 
         switch ($type) {
             case self::ALL:
-              return array_merge($files['dir'], $files['file']);
+                return array_merge($files['dir'], $files['file']);
             case self::FILE:
-              return $files['file'];
+                return $files['file'];
             case self::DIR:
-              return $files['dir'];
+                return $files['dir'];
             default:
                 throw new InvalidArgumentException(sprintf(
                     'Invalid filter value [%d] must be one of [%s]',

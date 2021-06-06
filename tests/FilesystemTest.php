@@ -8,7 +8,7 @@ use Platine\Filesystem\Adapter\Local\Directory;
 use Platine\Filesystem\Adapter\Local\File;
 use Platine\Filesystem\Adapter\Local\LocalAdapter;
 use Platine\Filesystem\Filesystem;
-use Platine\PlatineTestCase;
+use Platine\Dev\PlatineTestCase;
 
 /**
  * Filesystem class tests

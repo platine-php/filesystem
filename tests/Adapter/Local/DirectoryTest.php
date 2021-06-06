@@ -10,7 +10,7 @@ use Platine\Filesystem\Adapter\Local\Directory;
 use Platine\Filesystem\Adapter\Local\Exception\NotFoundException;
 use Platine\Filesystem\Adapter\Local\LocalAdapter;
 use Platine\Filesystem\DirectoryInterface;
-use Platine\PlatineTestCase;
+use Platine\Dev\PlatineTestCase;
 
 /**
  * Directory class tests
@@ -40,10 +40,6 @@ class DirectoryTest extends PlatineTestCase
 
     public function testCreate(): void
     {
-        global $mock_realpath_to_same;
-
-        $mock_realpath_to_same = true;
-
         $dir = $this->createVfsDirectory('directories', $this->vfsPath);
 
         $t = new Directory($dir->url(), new LocalAdapter($this->vfsPath->url()));
