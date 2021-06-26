@@ -51,7 +51,7 @@ namespace Platine\Filesystem;
  * Class FileInterface
  * @package Platine\Filesystem
  */
-interface FileInterface extends FileSystemInterface
+interface FileInterface extends FilesystemInterface
 {
 
     /**

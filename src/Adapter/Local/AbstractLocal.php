@@ -48,14 +48,14 @@ declare(strict_types=1);
 namespace Platine\Filesystem\Adapter\Local;
 
 use Platine\Filesystem\Adapter\AdapterInterface;
-use Platine\Filesystem\FileSystemInterface;
+use Platine\Filesystem\FilesystemInterface;
 use Platine\Stdlib\Helper\Path;
 
 /**
  * Class AbstractLocal
  * @package Platine\Filesystem\Adapter\Local
  */
-abstract class AbstractLocal implements FileSystemInterface
+abstract class AbstractLocal implements FilesystemInterface
 {
 
     /**

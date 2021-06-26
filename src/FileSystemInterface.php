@@ -30,7 +30,7 @@
  */
 
 /**
- *  @file FileSystemCommonInterface.php
+ *  @file FilesystemInterface.php
  *
  *  The file system common interface
  *
@@ -50,10 +50,10 @@ namespace Platine\Filesystem;
 use Platine\Filesystem\Adapter\AdapterInterface;
 
 /**
- * Class FileSystemCommonInterface
+ * Class FilesystemInterface
  * @package Platine\Filesystem
  */
-interface FileSystemInterface
+interface FilesystemInterface
 {
 
     /**
