@@ -81,7 +81,7 @@ interface FilesystemInterface
     public function getPath(): string;
 
     /**
-     * Copy the file system to new path
+     * Copy the file system to given path
      * @param string|DirectoryInterface $directory
      * @param int $mode
      * @return FileInterface|DirectoryInterface
