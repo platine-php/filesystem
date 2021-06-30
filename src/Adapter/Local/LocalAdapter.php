@@ -64,26 +64,26 @@ class LocalAdapter implements AdapterInterface
      * The root directory
      * @var string
      */
-    protected string $root = '.';
+    protected string $root = '';
 
     /**
      * Create new instance
-     * @param string|null $root
+     * @param string $root
      */
-    public function __construct(?string $root = null)
+    public function __construct(string $root = '')
     {
-        if ($root !== null) {
-            $path = Path::normalizePathDS($root, true);
+        if ($root !== '') {
+            $root = Path::normalizePathDS($root, true);
 
-            if (!file_exists($path) || !is_writable($path)) {
+            if (!file_exists($root) || !is_writable($root)) {
                 throw new InvalidArgumentException(sprintf(
                     'Root path [%s] does not exist or is not writable',
-                    $path
+                    $root
                 ));
             }
-
-            $this->root = $path;
         }
+
+        $this->root = $root;
     }
 
 
@@ -127,6 +127,11 @@ class LocalAdapter implements AdapterInterface
     public function getAbsolutePath(string $path): string
     {
         $normalizedPath = Path::normalizePathDS($path);
+
+        if (empty($this->root)) {
+            return $normalizedPath;
+        }
+
         if (strpos($normalizedPath, $this->root) !== 0) {
             $normalizedPath = $this->root . ltrim($normalizedPath, DIRECTORY_SEPARATOR);
         }

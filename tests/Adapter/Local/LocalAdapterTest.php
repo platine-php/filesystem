@@ -25,10 +25,7 @@ class LocalAdapterTest extends PlatineTestCase
         $mock_realpath_to_foodir = true;
 
         $t = new LocalAdapter();
-        $this->assertEquals(
-            '.',
-            $this->getPropertyValue(LocalAdapter::class, $t, 'root')
-        );
+        $this->assertEmpty($this->getPropertyValue(LocalAdapter::class, $t, 'root'));
     }
 
     public function testConstructorRootDoesNotExist(): void

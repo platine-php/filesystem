@@ -69,7 +69,7 @@ class Filesystem
      */
     public function __construct(?AdapterInterface $adapter = null)
     {
-        $this->adapter = $adapter ? $adapter : new LocalAdapter();
+        $this->adapter = $adapter ?? new LocalAdapter();
     }
 
     /**
