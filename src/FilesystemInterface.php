@@ -83,7 +83,7 @@ interface FilesystemInterface
     /**
      * Copy the file system to given path
      * @param string|DirectoryInterface $directory
-     * @param int $mode
+     * @param int $mode the mode
      * @return FileInterface|DirectoryInterface
      */
     public function copyTo($directory, int $mode = 0775);
