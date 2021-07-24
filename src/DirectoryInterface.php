@@ -65,9 +65,10 @@ interface DirectoryInterface extends FilesystemInterface
      * Create new directory
      * @param string $name
      * @param int $mode
+     * @param bool $recursive
      * @return self
      */
-    public function create(string $name, int $mode = 0775);
+    public function create(string $name, int $mode = 0775, bool $recursive = false);
 
     /**
      * Create new file in this directory

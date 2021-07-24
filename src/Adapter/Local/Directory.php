@@ -97,10 +97,10 @@ class Directory extends AbstractLocal implements DirectoryInterface
     /**
     * {@inheritdoc}
     */
-    public function create(string $name, int $mode = 0775)
+    public function create(string $name, int $mode = 0775, bool $recursive = false)
     {
         if (!file_exists($this->path . DIRECTORY_SEPARATOR . $name)) {
-            mkdir($this->path . DIRECTORY_SEPARATOR . $name, $mode);
+            mkdir($this->path . DIRECTORY_SEPARATOR . $name, $mode, $recursive);
         } else {
             chmod($this->path . DIRECTORY_SEPARATOR . $name, $mode);
         }
