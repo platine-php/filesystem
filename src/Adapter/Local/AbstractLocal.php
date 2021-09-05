@@ -113,7 +113,7 @@ abstract class AbstractLocal implements FilesystemInterface
     public function setPath(string $path): self
     {
         $this->originalPath = $path && $path !== DIRECTORY_SEPARATOR
-                                ? trim($path, DIRECTORY_SEPARATOR)
+                                ? rtrim($path, DIRECTORY_SEPARATOR)
                                 : DIRECTORY_SEPARATOR;
         $this->path = $this->adapter->getAbsolutePath($path);
 
