@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace Platine\Test\Filesystem\Adapter\Local;
 
 use org\bovigo\vfs\vfsStream;
+use Platine\Dev\PlatineTestCase;
 use Platine\Filesystem\Adapter\AdapterInterface;
+use Platine\Filesystem\Adapter\Local\Exception\FilesystemException;
 use Platine\Filesystem\Adapter\Local\File;
 use Platine\Filesystem\Adapter\Local\LocalAdapter;
 use Platine\Filesystem\FileInterface;
-use Platine\Dev\PlatineTestCase;
 
 /**
  * File class tests
@@ -171,7 +172,8 @@ class FileTest extends PlatineTestCase
         );
 
         $t = new File($file->url(), $adapter);
-        $this->assertEmpty($t->getPermission());
+        $this->expectException(FilesystemException::class);
+        $t->getPermission();
     }
 
     public function testGetMimeUsingHelperToGetMimetype(): void

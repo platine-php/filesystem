@@ -33,10 +33,12 @@ declare(strict_types=1);
 
 namespace Platine\Filesystem\Adapter\Local\Exception;
 
+use Exception;
+
 /**
- * Class NotFoundException
+ * Class FilesystemException
  * @package Platine\Filesystem\Adapter\Local\Exception
  */
-class NotFoundException extends FilesystemException
+class FilesystemException extends Exception
 {
 }

@@ -48,8 +48,10 @@ declare(strict_types=1);
 namespace Platine\Filesystem\Adapter\Local;
 
 use Platine\Filesystem\Adapter\AdapterInterface;
+use Platine\Filesystem\Adapter\Local\Exception\FilesystemException;
 use Platine\Filesystem\FilesystemInterface;
 use Platine\Stdlib\Helper\Path;
+
 
 /**
  * Class AbstractLocal
@@ -191,7 +193,10 @@ abstract class AbstractLocal implements FilesystemInterface
     {
         $permission = fileperms($this->path);
         if ($permission === false) {
-            return '';
+            throw new FilesystemException(sprintf(
+                'Can not get permission for file [%s]',
+                $this->path
+            ));
         }
         return substr(base_convert((string) $permission, 10, 8), -4);
     }
