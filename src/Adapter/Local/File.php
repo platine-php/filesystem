@@ -79,7 +79,7 @@ class File extends AbstractLocal implements FileInterface
         return $directory->createFile(
             $this->getName(),
             $this->read(),
-            (int) $this->getPermission()
+            $mode
         );
     }
 
