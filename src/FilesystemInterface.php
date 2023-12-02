@@ -55,7 +55,6 @@ use Platine\Filesystem\Adapter\AdapterInterface;
  */
 interface FilesystemInterface
 {
-
     /**
      * Whether the file system is a file
      * @return bool

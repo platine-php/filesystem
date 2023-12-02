@@ -18,7 +18,6 @@ use Platine\Dev\PlatineTestCase;
  */
 class FilesystemTest extends PlatineTestCase
 {
-
     public function testConstructor(): void
     {
         $t = new Filesystem();

@@ -56,7 +56,6 @@ use Platine\Filesystem\FileInterface;
  */
 interface AdapterInterface
 {
-
     /**
      * Return the instance of file or directory
      * @param string $path

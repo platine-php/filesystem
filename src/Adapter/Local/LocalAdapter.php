@@ -59,7 +59,6 @@ use Platine\Stdlib\Helper\Path;
  */
 class LocalAdapter implements AdapterInterface
 {
-
     /**
      * The root directory
      * @var string

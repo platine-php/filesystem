@@ -53,7 +53,6 @@ namespace Platine\Filesystem;
  */
 interface FileInterface extends FilesystemInterface
 {
-
     /**
      * Create new file
      * @param string $path

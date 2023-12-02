@@ -56,7 +56,6 @@ use Platine\Filesystem\Adapter\Local\LocalAdapter;
  */
 class Filesystem
 {
-
     /**
      * The adapter instance
      * @var AdapterInterface

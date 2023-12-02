@@ -53,7 +53,6 @@ namespace Platine\Filesystem;
  */
 interface DirectoryInterface extends FilesystemInterface
 {
-
     /**
      * Filter list for directory read
      */

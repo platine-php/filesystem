@@ -59,7 +59,6 @@ use Platine\Stdlib\Helper\Path;
  */
 abstract class AbstractLocal implements FilesystemInterface
 {
-
     /**
      * The adapter instance
      * @var AdapterInterface

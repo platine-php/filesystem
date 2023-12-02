@@ -58,7 +58,6 @@ use Platine\Filesystem\FileInterface;
  */
 class Directory extends AbstractLocal implements DirectoryInterface
 {
-
     /**
     * {@inheritdoc}
     */

@@ -56,7 +56,6 @@ use Platine\Stdlib\Helper\Path;
  */
 class File extends AbstractLocal implements FileInterface
 {
-
     /**
     * {@inheritdoc}
     */
