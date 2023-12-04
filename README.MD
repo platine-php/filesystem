@@ -4,6 +4,7 @@
 [![Project Status](http://opensource.box.com/badges/active.svg)](http://opensource.box.com/badges)
 [![Latest Stable Version](https://poser.pugx.org/platine-php/filesystem/v)](https://packagist.org/packages/platine-php/filesystem)
 [![Latest Unstable Version](https://poser.pugx.org/platine-php/filesystem/v/unstable)](https://packagist.org/packages/platine-php/filesystem)
+![Tests](https://github.com/platine-php/filesystem/actions/workflows/ci.yml/badge.svg)
 [![Total Downloads](https://poser.pugx.org/platine-php/filesystem/downloads)](https://packagist.org/packages/platine-php/filesystem)
 [![License](https://poser.pugx.org/platine-php/filesystem/license)](https://packagist.org/packages/platine-php/filesystem)  
 [![Quality Score](https://img.shields.io/scrutinizer/g/platine-php/filesystem.svg?style=flat-square)](https://scrutinizer-ci.com/g/platine-php/filesystem)
