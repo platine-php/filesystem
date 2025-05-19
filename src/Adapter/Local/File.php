@@ -47,11 +47,12 @@ declare(strict_types=1);
 
 namespace Platine\Filesystem\Adapter\Local;
 
+use Platine\Filesystem\DirectoryInterface;
 use Platine\Filesystem\FileInterface;
 use Platine\Stdlib\Helper\Path;
 
 /**
- * Class File
+ * @class File
  * @package Platine\Filesystem\Adapter\Local
  */
 class File extends AbstractLocal implements FileInterface
@@ -69,8 +70,10 @@ class File extends AbstractLocal implements FileInterface
     /**
     * {@inheritdoc}
     */
-    public function copyTo($directory, int $mode = 0775)
-    {
+    public function copyTo(
+        string|DirectoryInterface $directory,
+        int $mode = 0775
+    ): FileInterface {
         if (is_string($directory)) {
             $directory = $this->adapter->directory($directory);
         }
@@ -85,7 +88,7 @@ class File extends AbstractLocal implements FileInterface
     /**
     * {@inheritdoc}
     */
-    public function create(string $path, string $content = '', int $mode = 0775)
+    public function create(string $path, string $content = '', int $mode = 0775): FileInterface
     {
         $file = $this->adapter->file($path)->write($content);
         $file->chmod($mode);

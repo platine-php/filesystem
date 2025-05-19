@@ -50,7 +50,7 @@ namespace Platine\Filesystem;
 use Platine\Filesystem\Adapter\AdapterInterface;
 
 /**
- * Class FilesystemInterface
+ * @class FilesystemInterface
  * @package Platine\Filesystem
  */
 interface FilesystemInterface
@@ -85,14 +85,14 @@ interface FilesystemInterface
      * @param int $mode the mode
      * @return FileInterface|DirectoryInterface
      */
-    public function copyTo($directory, int $mode = 0775);
+    public function copyTo(string|DirectoryInterface $directory, int $mode = 0775): FileInterface|DirectoryInterface;
 
     /**
      * Move this file system to new path
      * @param string|DirectoryInterface $directory
      * @return FileInterface|DirectoryInterface
      */
-    public function moveTo($directory);
+    public function moveTo(string|DirectoryInterface $directory): FileInterface|DirectoryInterface;
 
     /**
      * Return the original path of this file system
@@ -109,9 +109,9 @@ interface FilesystemInterface
     /**
      * Change the modification time of the file system
      * @param int $time
-     * @return self
+     * @return $this
      */
-    public function touch(int $time);
+    public function touch(int $time): self;
 
     /**
      * Return the location of this file system
@@ -128,9 +128,9 @@ interface FilesystemInterface
     /**
      * Change the file system permission
      * @param int $mode
-     * @return self
+     * @return $this
      */
-    public function chmod(int $mode);
+    public function chmod(int $mode): self;
 
     /**
      * Whether the file system exists
@@ -154,15 +154,15 @@ interface FilesystemInterface
     /**
      * Rename the file system
      * @param string $newPath
-     * @return self
+     * @return $this
      */
-    public function rename(string $newPath);
+    public function rename(string $newPath): self;
 
     /**
      * Delete the file system
      * @return FileInterface|DirectoryInterface
      */
-    public function delete();
+    public function delete(): FileInterface|DirectoryInterface;
 
     /**
      * Whether the file system is readable

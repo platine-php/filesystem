@@ -51,7 +51,7 @@ use Platine\Filesystem\Adapter\AdapterInterface;
 use Platine\Filesystem\Adapter\Local\LocalAdapter;
 
 /**
- * Class Filesystem
+ * @class Filesystem
  * @package Platine\Filesystem
  */
 class Filesystem
@@ -85,7 +85,7 @@ class Filesystem
      * @param string $path
      * @return FileInterface|DirectoryInterface|null
      */
-    public function get(string $path)
+    public function get(string $path): FileInterface|DirectoryInterface|null
     {
         return $this->adapter->get($path);
     }

@@ -48,7 +48,7 @@ declare(strict_types=1);
 namespace Platine\Filesystem;
 
 /**
- * Class DirectoryInterface
+ * @class DirectoryInterface
  * @package Platine\Filesystem
  */
 interface DirectoryInterface extends FilesystemInterface
@@ -67,7 +67,11 @@ interface DirectoryInterface extends FilesystemInterface
      * @param bool $recursive
      * @return self
      */
-    public function create(string $name, int $mode = 0775, bool $recursive = false);
+    public function create(
+        string $name,
+        int $mode = 0775,
+        bool $recursive = false
+    ): self;
 
     /**
      * Create new file in this directory
@@ -91,7 +95,7 @@ interface DirectoryInterface extends FilesystemInterface
     /**
      * Return the directory content
      * @param int $filter
-     * @return array<int, FileInterface|DirectoryInterface>
+     * @return FileInterface[]|DirectoryInterface[]
      */
     public function read(int $filter = self::ALL): array;
 }

@@ -49,12 +49,14 @@ namespace Platine\Filesystem\Adapter\Local;
 
 use Platine\Filesystem\Adapter\AdapterInterface;
 use Platine\Filesystem\Adapter\Local\Exception\FilesystemException;
+use Platine\Filesystem\DirectoryInterface;
+use Platine\Filesystem\FileInterface;
 use Platine\Filesystem\FilesystemInterface;
 use Platine\Stdlib\Helper\Path;
 
 
 /**
- * Class AbstractLocal
+ * @class AbstractLocal
  * @package Platine\Filesystem\Adapter\Local
  */
 abstract class AbstractLocal implements FilesystemInterface
@@ -133,7 +135,7 @@ abstract class AbstractLocal implements FilesystemInterface
     /**
     * {@inheritdoc}
     */
-    public function moveTo($directory)
+    public function moveTo(string|DirectoryInterface $directory): FileInterface|DirectoryInterface
     {
         $dest = $this->copyTo($directory);
         $dest->touch($this->getMtime());
@@ -145,7 +147,7 @@ abstract class AbstractLocal implements FilesystemInterface
     /**
     * {@inheritdoc}
     */
-    public function chmod(int $mode)
+    public function chmod(int $mode): self
     {
         chmod($this->path, $mode);
 
@@ -244,7 +246,7 @@ abstract class AbstractLocal implements FilesystemInterface
     /**
     * {@inheritdoc}
     */
-    public function rename(string $newPath)
+    public function rename(string $newPath): self
     {
         $normalizedNewPath = rtrim(Path::normalizePathDS($newPath), '\\/');
         if (strpos($normalizedNewPath, DIRECTORY_SEPARATOR) === false) {
@@ -264,7 +266,7 @@ abstract class AbstractLocal implements FilesystemInterface
     /**
     * {@inheritdoc}
     */
-    public function touch(int $time)
+    public function touch(int $time): self
     {
         touch($this->path, $time);
 

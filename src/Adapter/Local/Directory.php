@@ -53,7 +53,7 @@ use Platine\Filesystem\DirectoryInterface;
 use Platine\Filesystem\FileInterface;
 
 /**
- * Class Directory
+ * @class Directory
  * @package Platine\Filesystem\Adapter\Local
  */
 class Directory extends AbstractLocal implements DirectoryInterface
@@ -61,8 +61,10 @@ class Directory extends AbstractLocal implements DirectoryInterface
     /**
     * {@inheritdoc}
     */
-    public function copyTo($directory, int $mode = 0775)
-    {
+    public function copyTo(
+        string|DirectoryInterface $directory,
+        int $mode = 0775
+    ): FileInterface|DirectoryInterface {
         if (!$this->exists()) {
             throw new NotFoundException(sprintf(
                 'Source path [%s] not found',
@@ -96,7 +98,7 @@ class Directory extends AbstractLocal implements DirectoryInterface
     /**
     * {@inheritdoc}
     */
-    public function create(string $name, int $mode = 0775, bool $recursive = false)
+    public function create(string $name, int $mode = 0775, bool $recursive = false): DirectoryInterface
     {
         if (!file_exists($this->path . DIRECTORY_SEPARATOR . $name)) {
             mkdir($this->path . DIRECTORY_SEPARATOR . $name, $mode, $recursive);

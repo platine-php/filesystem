@@ -51,7 +51,7 @@ use Platine\Filesystem\DirectoryInterface;
 use Platine\Filesystem\FileInterface;
 
 /**
- * Class AdapterInterface
+ * @class AdapterInterface
  * @package Platine\Filesystem\Adapter
  */
 interface AdapterInterface
@@ -61,7 +61,7 @@ interface AdapterInterface
      * @param string $path
      * @return FileInterface|DirectoryInterface|null
      */
-    public function get(string $path);
+    public function get(string $path): FileInterface|DirectoryInterface|null;
 
     /**
      * Return the instance of file

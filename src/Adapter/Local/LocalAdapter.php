@@ -54,7 +54,7 @@ use Platine\Filesystem\FileInterface;
 use Platine\Stdlib\Helper\Path;
 
 /**
- * Class LocalAdpater
+ * @class LocalAdpater
  * @package Platine\Filesystem\Adapter\Local
  */
 class LocalAdapter implements AdapterInterface
@@ -105,7 +105,7 @@ class LocalAdapter implements AdapterInterface
     /**
     * {@inheritdoc}
     */
-    public function get(string $path)
+    public function get(string $path): FileInterface|DirectoryInterface|null
     {
         $absolutePath = $this->getAbsolutePath($path);
 

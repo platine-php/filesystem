@@ -36,7 +36,7 @@ namespace Platine\Filesystem\Adapter\Local\Exception;
 use Exception;
 
 /**
- * Class FilesystemException
+ * @class FilesystemException
  * @package Platine\Filesystem\Adapter\Local\Exception
  */
 class FilesystemException extends Exception

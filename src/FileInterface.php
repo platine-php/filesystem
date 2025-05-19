@@ -48,7 +48,7 @@ declare(strict_types=1);
 namespace Platine\Filesystem;
 
 /**
- * Class FileInterface
+ * @class FileInterface
  * @package Platine\Filesystem
  */
 interface FileInterface extends FilesystemInterface
@@ -64,7 +64,7 @@ interface FileInterface extends FilesystemInterface
         string $path,
         string $content = '',
         int $mode = 0775
-    );
+    ): self;
 
     /**
      * Return the file content
