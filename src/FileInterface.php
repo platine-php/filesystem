@@ -73,6 +73,12 @@ interface FileInterface extends FilesystemInterface
     public function read(): string;
 
     /**
+     * Return the checksum of file content
+     * @return string
+     */
+    public function checksum(): string;
+
+    /**
      * Write the file content
      * @param string $content
      * @return $this

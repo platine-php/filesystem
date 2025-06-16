@@ -50,6 +50,7 @@ namespace Platine\Filesystem\Adapter\Local;
 use Platine\Filesystem\DirectoryInterface;
 use Platine\Filesystem\FileInterface;
 use Platine\Stdlib\Helper\Path;
+use RuntimeException;
 
 /**
  * @class File
@@ -133,6 +134,19 @@ class File extends AbstractLocal implements FileInterface
     public function getType(): string
     {
         return 'file';
+    }
+
+    /**
+    * {@inheritdoc}
+    */
+    public function checksum(): string
+    {
+        $res = md5_file($this->path);
+        if ($res === false) {
+            throw new RuntimeException(sprintf('can not get checksum of file [%s]', $this->path));
+        }
+
+        return $res;
     }
 
     /**

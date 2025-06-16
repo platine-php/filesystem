@@ -11,6 +11,7 @@ use Platine\Filesystem\Adapter\Local\Exception\FilesystemException;
 use Platine\Filesystem\Adapter\Local\File;
 use Platine\Filesystem\Adapter\Local\LocalAdapter;
 use Platine\Filesystem\FileInterface;
+use RuntimeException;
 
 /**
  * File class tests
@@ -64,6 +65,7 @@ class FileTest extends PlatineTestCase
         $t = new File($file->url(), $adapter);
         $t->write('bar');
         $this->assertEquals('bar', $t->read());
+        $this->assertEquals('37b51d194a7513e45b56f6524f2d51f2', $t->checksum());
     }
 
     public function testCreate(): void
@@ -77,6 +79,18 @@ class FileTest extends PlatineTestCase
         $this->assertEquals('bar', $file->read());
         $this->assertEquals(3, $file->getSize());
         $this->assertTrue($file->isFile());
+    }
+
+    public function testCannotGetChecksum(): void
+    {
+        global $mock_md5_file_to_false;
+
+        $mock_md5_file_to_false = true;
+
+        $t = new File($this->vfsPath->url(), new LocalAdapter($this->vfsPath->url()));
+        $file = $t->create('my_file', 'bar');
+        $this->expectException(RuntimeException::class);
+        $file->checksum();
     }
 
     public function testGetType(): void

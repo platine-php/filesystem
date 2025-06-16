@@ -11,9 +11,20 @@ $mock_realpath_to_same = false;
 $mock_is_file_to_true = false;
 $mock_is_dir_to_true = false;
 $mock_scandir_to_false = false;
+$mock_md5_file_to_false = false;
 $mock_fileperms_to_false = false;
 $mock_is_writable_to_false = false;
 $mock_is_writable_to_true = false;
+
+function md5_file(string $path)
+{
+    global $mock_md5_file_to_false;
+    if ($mock_md5_file_to_false) {
+        return false;
+    }
+
+    return \md5_file($path);
+}
 
 function is_writable(string $key)
 {
